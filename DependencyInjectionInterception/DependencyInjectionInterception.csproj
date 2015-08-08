@@ -66,8 +66,8 @@
   <ItemGroup>
     <Compile Include="IPrescription.cs" />
     <Compile Include="IPrescriptionService.cs" />
-    <Compile Include="LoggingInterceptionBehavior.cs" />
-    <Compile Include="LoggingPrescriptionService.cs" />
+    <Compile Include="AuditingInterceptionBehavior.cs" />
+    <Compile Include="AuditingPrescriptionService.cs" />
     <Compile Include="Prescription.cs" />
     <Compile Include="PrescriptionService.cs" />
     <Compile Include="Program.cs" />

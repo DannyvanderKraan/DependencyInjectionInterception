@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DependencyInjectionInterception
 {
-    public class LoggingInterceptionBehavior : IInterceptionBehavior
+    public class AuditingInterceptionBehavior : IInterceptionBehavior
     {
         public bool WillExecute
         {
@@ -29,7 +29,7 @@ namespace DependencyInjectionInterception
             //The logged in user happens to be Danny all the time. ;-)
             string identity = "Danny";
 
-            //Before: You can write a message to the log before the next behavior in the chain/intended target gets called.
+            //Before: You can write a message to the log before the next behaviour in the chain/intended target gets called.
             WriteLog(String.Format(
               "{0}: User {1} {2}. Technical details: Before invoking method {3}",
               DateTime.Now.ToLongTimeString(),
@@ -37,13 +37,13 @@ namespace DependencyInjectionInterception
               (input.MethodBase.GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute)?.Description,
               input.MethodBase));
 
-            //Actual call to the next behavior in the chain or the intended target.
+            //Actual call to the next behaviour in the chain or the intended target.
             var result = getNext()(input, getNext);
 
             //After: And you can write a message to the log after the call returns.
             if (result.Exception != null)
             {
-                //You can for instance write to the log if an exception has occured.
+                //You can for instance write to the log if an exception has occurred.
                 WriteLog(String.Format(
                   "{0}: Method {1} threw exception: {2}",
                   DateTime.Now.ToLongTimeString(),

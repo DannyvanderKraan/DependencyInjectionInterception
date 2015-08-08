@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DependencyInjectionInterception
 {
-    public class LoggingPrescriptionService: IPrescriptionService
+    public class AuditingPrescriptionService: IPrescriptionService
     {
         IPrescriptionService Service { get; set; }
         private int UserID { get; set; }
 
-        public LoggingPrescriptionService(IPrescriptionService service, int userID)
+        public AuditingPrescriptionService(IPrescriptionService service, int userID)
         {
             if(service == null)
             {

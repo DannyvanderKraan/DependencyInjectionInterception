@@ -20,7 +20,7 @@ namespace DependencyInjectionInterception
             Container.RegisterType<IPrescription, Prescription>();
             Container.RegisterType<IPrescriptionService, PrescriptionService>(
                 new Interceptor<InterfaceInterceptor>(),
-                new InterceptionBehavior<LoggingInterceptionBehavior>());
+                new InterceptionBehavior<AuditingInterceptionBehavior>());
 
             IPrescriptionService service = Container.Resolve<IPrescriptionService>();
 
